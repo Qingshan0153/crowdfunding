@@ -14,4 +14,41 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
 
+    <!--    配置SqlSessionFactoryBean，整合 Mybatis -->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--    装配数据源    -->
+        <property name="dataSource" ref="dataSource"/>
+
+        <!--   指定mybatis-config 全局配置文件位置     -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+
+        <!--    指定mapper.xml 目录    -->
+        <property name="mapperLocations" value="classpath:com/crowd/mappers/*Mapper.xml"/>
+
+    </bean>
+
+    <!-- 配置 MapperScannerConfigurer扫描 mapper所在包   -->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--    指定mapper接口所在包    -->
+        <property name="basePackage" value="com.crowd.mappers"/>
+    </bean>
+
+
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
