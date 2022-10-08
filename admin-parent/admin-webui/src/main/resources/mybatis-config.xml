@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--    引入properties文件-->
+    <properties resource="jdbc.properties"/>
+
+    <!--    mybatis核心配置文件 标签配置顺序-->
+    <!--    (properties?,settings?,typeAliases?,typeHandlers?,objectFactory?,objectWrapperFactory?,
+                reflectorFactory?,plugins?,environments?,databaseIdProvider?,mappers?)-->
+
+    <!-- typeAliases： javaBean映射全类名  别名-->
+    <typeAliases>
+        <!--        类型别名不区分大小写
+                        不设置 alias，默认为类名，不区分大小写
+        -->
+        <!--        <typeAlias type="com.mybatis.pojo.User"/>-->
+
+        <!--        以包名为单位，将包下所有实体类设置默认类型别名，即类型不区分大小写-->
+        <package name=""/>
+    </typeAliases>
+
+
+    <!--    配置连接数据库环境-->
+    <environments default="development">
+        <environment id="development">
+            <!--         transactionManager:事务管理
+                                JDBC：表示原生的JDBC事务管理方式
+               -->
+            <transactionManager type="JDBC"/>
+            <!--  dataSource数据源：
+                    POOLED：使用数据数据库连接池缓存数据库连接
+             -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--    引入映射文件-->
+    <mappers>
+        <!--        <mappers resource="mappers/UserMapper.xml"/>-->
+
+        <!-- 以包为单位，将包下所有映射配置文件加载
+                   要求:
+                      1. mapper接口所在包和映射文件所在包名一致
+                      1. mapper接口和映射文件名一致
+        -->
+        <package name=""/>
+    </mappers>
+</configuration>
