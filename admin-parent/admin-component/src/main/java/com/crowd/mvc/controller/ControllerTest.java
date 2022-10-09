@@ -1,12 +1,16 @@
 package com.crowd.mvc.controller;
 
+import com.crowd.entityTest.Student;
 import com.crowd.pojo.Admin;
 import com.crowd.service.AdminService;
+import com.crowd.util.ResultEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -23,6 +27,22 @@ public class ControllerTest {
     @Autowired
     private AdminService adminService;
 
+    @ResponseBody
+    @RequestMapping("/send/array/object.json")
+    public ResultEntity<Student> ajaxObjectTest(@RequestBody Student student){
+
+        return ResultEntity.successWithData(student);
+    }
+
+
+
+    @RequestMapping("/send/array/three.html")
+    public String ajaxTestThree(@RequestBody List<Integer> array) {
+        for (Integer num : array) {
+            System.out.println("num = " + num);
+        }
+        return "target";
+    }
 
     @RequestMapping("/send/array/one.html")
     public String ajaxTestOne(@RequestParam("array[]") List<Integer> array) {

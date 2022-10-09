@@ -14,6 +14,77 @@
     <script type="text/javascript">
         $(function () {
 
+            var object = {
+                stuId: 1,
+                stuName: "王德法",
+                address: {
+                    province: '广东',
+                    city: '深圳',
+                    street: '玉树临风街'
+                },
+                subjects: [
+                    {
+                        subjectName: 'javaee',
+                        subjectScore: '100'
+                    },
+                    {
+                        subjectName: 'mysql',
+                        subjectScore: '99'
+                    },
+                ],
+                map: {
+                    k1: 'v1',
+                    k2: 'v2'
+                }
+            }
+
+            var requestBodyObj = JSON.stringify(object);
+
+            $("#btn04").click(function () {
+                $.ajax({
+                    url: "send/array/object.json",
+                    type: 'post',
+                    data: requestBodyObj,
+                    contentType: "application/json;charset=UTF-8",
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response)
+                    },
+                    //     请求失败
+                    error: function (response) {
+                        console.log(response);
+                    }
+                })
+            })
+
+
+            // 准备好发送的数组
+            var array = [5, 2, 18];
+            // 将json数组转为 json 字符串
+            var requestBody = JSON.stringify(array);
+            console.log(requestBody)
+
+            $("#btn03").click(function () {
+                $.ajax({
+                    url: 'send/array/three.html',
+                    type: 'post',
+                    data: requestBody, //请求体
+                    contentType: "application/json;charset=UTF-8", // 设置请求体内容类型
+                    // 服务器返回数据类型
+                    dataType: 'text',
+
+                    // 请求成功
+                    success: function (response) {
+                        console.log(response)
+                    },
+                    //     请求失败
+                    error: function (response) {
+                        console.log(response);
+                    }
+                });
+            })
+
+
             $("#btn02").click(function () {
                 $.ajax({
                     url: 'send/array/two.html',
@@ -65,6 +136,11 @@
 <button id="btn01">Send [5,2,18] One</button>
 <br>
 <button id="btn02">Send [5,2,18] Two</button>
+<br>
+<button id="btn03">Send [5,2,18] Three</button>
+<br>
+<button id="btn04">Send Object</button>
+
 
 </body>
 </html>
