@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -21,6 +22,25 @@ public class ControllerTest {
 
     @Autowired
     private AdminService adminService;
+
+
+    @RequestMapping("/send/array/one.html")
+    public String ajaxTestOne(@RequestParam("array[]") List<Integer> array) {
+        for (Integer num : array) {
+            System.out.println(num);
+        }
+        return "target";
+    }
+
+
+    @RequestMapping("/send/array/two.html")
+    public String ajaxTestTwo(@RequestParam("array[]") List<Integer> array) {
+        for (Integer num : array) {
+            System.out.println(num);
+        }
+        return "target";
+    }
+
 
     @RequestMapping("/test/ssm.html")
     public String ssmTest(Model model) {
