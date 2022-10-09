@@ -3,7 +3,8 @@ package com.crowd.util;
 /**
  * 统一整个项目中 Ajax 请求返回的结果 ( 也可用于分布式架构各个模块之间调用时返回的同一类型 )
  *
- * @param <T>
+ * @param <T> data类型泛型
+ * @author 青衫
  */
 public class ResultEntity<T> {
 
