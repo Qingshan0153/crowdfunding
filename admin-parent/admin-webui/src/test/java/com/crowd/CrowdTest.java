@@ -2,6 +2,7 @@ package com.crowd;
 
 import com.crowd.mappers.AdminMapper;
 import com.crowd.pojo.Admin;
+import com.crowd.service.AdminService;
 import com.sun.org.slf4j.internal.LoggerFactory;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -21,7 +22,7 @@ import java.sql.SQLException;
  **/
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml"})
+@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml","classpath:spring-persist-tx.xml"})
 public class CrowdTest {
 
     @Autowired
@@ -30,6 +31,17 @@ public class CrowdTest {
     @Autowired
     private AdminMapper adminMapper;
 
+    @Autowired
+    private AdminService adminService;
+
+
+    @Test
+    public void serviceTest() {
+        Admin admin = new Admin(null, "lina", "lina", "lina", "lina@163.com", null);
+        adminService.saveAdmin(admin);
+    }
+
+
     @Test
     public void getConnectionTest() throws SQLException {
         Connection connection = dataSource.getConnection();
@@ -37,14 +49,11 @@ public class CrowdTest {
     }
 
     @Test
-    public void adminMapperTest(){
+    public void adminMapperTest() {
         Admin admin = adminMapper.selectByPrimaryKey(1);
         System.out.println(admin);
     }
 
-    public void logTest(){
-        LoggerFactory factory = new LoggerFactory();
-    }
 
 }
 
