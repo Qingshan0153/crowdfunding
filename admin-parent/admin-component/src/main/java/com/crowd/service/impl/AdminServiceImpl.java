@@ -2,10 +2,12 @@ package com.crowd.service.impl;
 
 import com.crowd.mappers.AdminMapper;
 import com.crowd.pojo.Admin;
+import com.crowd.pojo.AdminExample;
 import com.crowd.service.AdminService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author Mendax
@@ -21,5 +23,10 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void saveAdmin(Admin admin) {
         adminMapper.insert(admin);
+    }
+
+    @Override
+    public List<Admin> getAll() {
+        return adminMapper.selectByExample(new AdminExample());
     }
 }
