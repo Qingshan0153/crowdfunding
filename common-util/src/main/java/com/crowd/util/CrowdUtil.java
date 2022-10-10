@@ -44,7 +44,7 @@ public class CrowdUtil {
             BigInteger integer = new BigInteger(sigNum, out);
             // 7. 按16进制将 BigInteger值转为字符串
             int radix = 16;
-            return integer.toString(radix).toUpperCase();
+            return integer.toString(radix);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }

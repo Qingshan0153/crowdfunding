@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="keys" content="">
     <meta name="author" content="">
-    <title>管理员登录</title>
+    <title>登录错误</title>
     <base href="http://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -23,12 +23,12 @@
     <script type="text/javascript" src="jquery/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="layer/layer.js"></script>
     <script type="text/javascript">
-       $(function () {
-           $("#back").click(function () {
-               // 浏览器后退
-               window.history.back();
-           });
-       })
+        $(function () {
+            $("#back").click(function () {
+                // 浏览器后退
+                window.history.back();
+            });
+        })
     </script>
 
 </head>

@@ -6,6 +6,7 @@ import com.crowd.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
@@ -27,7 +28,7 @@ public class AdminController {
      * @param userPswd  密码
      * @return 视图
      */
-    @PostMapping("/admin/do/login.html")
+    @RequestMapping("/admin/do/login.html")
     public String doLogin(@RequestParam("loginAcct") String loginAcct, @RequestParam("userPswd") String userPswd, HttpSession session) {
 
         // 1.返回Admin对象说明登陆成功，否则抛出异常
