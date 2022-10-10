@@ -17,6 +17,18 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!--    配置基于 xml 的异常映射-->
+    <bean id="mappingExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <!--        配置异常类型和具体视图映射关系-->
+        <property name="exceptionMappings">
+            <props>
+                <!-- key属性指定异常全类名
+                     标签体中写对应的视图
+                 -->
+                <prop key="java.lang.Exception">system-error</prop>
+            </props>
+        </property>
+    </bean>
 
 
 </beans>

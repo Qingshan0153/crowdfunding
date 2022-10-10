@@ -3,6 +3,7 @@ package com.crowd.mvc.controller;
 import com.crowd.entityTest.Student;
 import com.crowd.pojo.Admin;
 import com.crowd.service.AdminService;
+import com.crowd.util.CrowdUtil;
 import com.crowd.util.ResultEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -29,11 +31,10 @@ public class ControllerTest {
 
     @ResponseBody
     @RequestMapping("/send/array/object.json")
-    public ResultEntity<Student> ajaxObjectTest(@RequestBody Student student){
-
+    public ResultEntity<Student> ajaxObjectTest(@RequestBody Student student) {
+        System.out.println(10/0);
         return ResultEntity.successWithData(student);
     }
-
 
 
     @RequestMapping("/send/array/three.html")
@@ -63,7 +64,10 @@ public class ControllerTest {
 
 
     @RequestMapping("/test/ssm.html")
-    public String ssmTest(Model model) {
+    public String ssmTest(Model model, HttpServletRequest request) {
+
+        boolean b = CrowdUtil.judgeRequestType(request);
+        System.out.println(b);
 
         List<Admin> admins = adminService.getAll();
         model.addAttribute("admins", admins);
