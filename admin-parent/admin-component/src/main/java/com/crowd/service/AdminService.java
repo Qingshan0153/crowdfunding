@@ -25,4 +25,13 @@ public interface AdminService {
      * @return 用户集合
      */
     List<Admin> getAll();
+
+    /**
+     * 根据用户名密码登录
+     *
+     * @param loginAcct 用户名
+     * @param userPswd  密码
+     * @return 用户对象
+     */
+    Admin getAdminByLoginAcct(String loginAcct, String userPswd);
 }

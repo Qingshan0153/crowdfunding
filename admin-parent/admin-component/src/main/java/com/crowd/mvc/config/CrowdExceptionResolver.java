@@ -1,12 +1,12 @@
 package com.crowd.mvc.config;
 
 import com.crowd.constant.CrowdConstant;
+import com.crowd.exception.LoginFailedException;
 import com.crowd.util.CrowdUtil;
 import com.crowd.util.ResultEntity;
 import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,10 +31,10 @@ public class CrowdExceptionResolver {
      * @return 视图模型
      * @throws IOException IO 异常
      */
-    @ExceptionHandler(value = NullPointerException.class)
-    public ModelAndView resolveNullPointerException(NullPointerException exception, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    @ExceptionHandler(value = LoginFailedException.class)
+    public ModelAndView resolveLoginFailedException(LoginFailedException exception, HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        String viewName = "system-error";
+        String viewName = "admin-login";
 
         return commonResolve(exception, viewName, request, response);
     }
