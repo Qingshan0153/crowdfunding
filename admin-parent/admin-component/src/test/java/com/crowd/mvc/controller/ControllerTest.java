@@ -71,32 +71,7 @@ public class ControllerTest {
         List<Admin> admins = adminService.getAll();
         model.addAttribute("admins", admins);
 
-       int a=10/0;
-
         return "target";
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
