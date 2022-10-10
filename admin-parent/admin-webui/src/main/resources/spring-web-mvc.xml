@@ -30,6 +30,8 @@
         </property>
     </bean>
 
+    <!--    直接关联请求地址和视图-->
+    <mvc:view-controller path="/admin/do/login.html" view-name="admin-login"/>
 
 </beans>
 

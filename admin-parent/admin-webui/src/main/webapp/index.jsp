@@ -11,6 +11,7 @@
     <title>首页</title>
     <base href="http://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/">
     <script type="text/javascript" src="jquery/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="layer/layer.js"></script>
     <script type="text/javascript">
         $(function () {
 
@@ -126,7 +127,13 @@
                         console.log(response);
                     }
                 });
-            })
+            });
+
+            $("#btn05").click(function () {
+                layer.msg("layer")
+            });
+
+
         })
     </script>
 </head>
@@ -140,6 +147,8 @@
 <button id="btn03">Send [5,2,18] Three</button>
 <br>
 <button id="btn04">Send Object</button>
+<br>
+<button id="btn05">Send layer</button>
 
 
 </body>

@@ -32,7 +32,6 @@ public class ControllerTest {
     @ResponseBody
     @RequestMapping("/send/array/object.json")
     public ResultEntity<Student> ajaxObjectTest(@RequestBody Student student) {
-        System.out.println(10/0);
         return ResultEntity.successWithData(student);
     }
 
@@ -71,6 +70,8 @@ public class ControllerTest {
 
         List<Admin> admins = adminService.getAll();
         model.addAttribute("admins", admins);
+
+       int a=10/0;
 
         return "target";
     }
