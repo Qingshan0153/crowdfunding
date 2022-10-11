@@ -21,6 +21,21 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
+    
+
+    /**
+     * 退出登录
+     * @param session 会话
+     * @return 界面
+     */
+    @RequestMapping("/admin/do.logout.html")
+    public String doLogout(HttpSession session) {
+        // session 强制失效
+        session.invalidate();
+        return "redirect:/admin/to/login/page.html";
+    }
+
+
     /**
      * 登陆方法
      *
@@ -36,6 +51,6 @@ public class AdminController {
 
         // 2. 登陆成功返回对象存入 session 域
         session.setAttribute(CrowdConstant.ATTR_NAME_LOGIN_ADMIN, admin);
-        return "admin-main";
+        return "redirect:/admin/to/main/page.html";
     }
 }
