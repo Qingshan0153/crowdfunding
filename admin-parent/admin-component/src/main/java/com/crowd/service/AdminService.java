@@ -1,6 +1,7 @@
 package com.crowd.service;
 
 import com.crowd.pojo.Admin;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -36,9 +37,12 @@ public interface AdminService {
     Admin getAdminByLoginAcct(String loginAcct, String userPswd);
 
     /**
-     * 分页方法
+     * 分页信息
      *
-     * @return 分页数据集合
+     * @param keyword  关键字
+     * @param pageNum  页数
+     * @param pageSize 每页条数
+     * @return Admin集合
      */
-    List<Admin> getPage();
+    PageInfo<Admin> getPageInfo(String keyword, Integer pageNum, Integer pageSize);
 }

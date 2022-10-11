@@ -3,13 +3,14 @@ package com.crowd.mvc.controller;
 import com.crowd.constant.CrowdConstant;
 import com.crowd.pojo.Admin;
 import com.crowd.service.AdminService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  * @author Mendax
@@ -21,14 +22,21 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @RequestMapping("/admin/do/getPage.html")
-    public String getPage(){
-        List<Admin> admins= adminService.getPage();
-        return null;
+    @RequestMapping("/admin/get/page.html")
+    public String getPage(
+            @RequestParam(value = "keyword", defaultValue = "") String keyword,
+            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
+            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+            Model model
+    ) {
+        PageInfo<Admin> pageInfo = adminService.getPageInfo(keyword, pageNum, pageSize);
+        model.addAttribute(CrowdConstant.ATTR_NAME_PAGE_INFO, pageInfo);
+        return "admin-page";
     }
 
     /**
      * 退出登录
+     *
      * @param session 会话
      * @return 界面
      */

@@ -8,6 +8,7 @@ import com.crowd.pojo.AdminExample;
 import com.crowd.service.AdminService;
 import com.crowd.util.CrowdUtil;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -72,9 +73,11 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<Admin> getPage() {
-
-        PageHelper.startPage(0);
-        return null;
+    public PageInfo<Admin> getPageInfo(String keyword, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<Admin> admins = adminMapper.selectAdminByKeyWord(keyword);
+        // 5:导航分页页码数
+        return new PageInfo<>(admins, 5);
     }
+
 }
