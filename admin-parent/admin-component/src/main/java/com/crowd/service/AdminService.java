@@ -34,4 +34,11 @@ public interface AdminService {
      * @return 用户对象
      */
     Admin getAdminByLoginAcct(String loginAcct, String userPswd);
+
+    /**
+     * 分页方法
+     *
+     * @return 分页数据集合
+     */
+    List<Admin> getPage();
 }

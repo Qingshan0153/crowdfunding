@@ -7,6 +7,7 @@ import com.crowd.pojo.Admin;
 import com.crowd.pojo.AdminExample;
 import com.crowd.service.AdminService;
 import com.crowd.util.CrowdUtil;
+import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -68,5 +69,12 @@ public class AdminServiceImpl implements AdminService {
         }
         // 7. 账号密码一致返回 admin
         return admin;
+    }
+
+    @Override
+    public List<Admin> getPage() {
+
+        PageHelper.startPage(0);
+        return null;
     }
 }

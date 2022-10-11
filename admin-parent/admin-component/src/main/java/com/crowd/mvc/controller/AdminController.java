@@ -5,11 +5,11 @@ import com.crowd.pojo.Admin;
 import com.crowd.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * @author Mendax
@@ -21,14 +21,18 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    
+    @RequestMapping("/admin/do/getPage.html")
+    public String getPage(){
+        List<Admin> admins= adminService.getPage();
+        return null;
+    }
 
     /**
      * 退出登录
      * @param session 会话
      * @return 界面
      */
-    @RequestMapping("/admin/do.logout.html")
+    @RequestMapping("/admin/do/logout.html")
     public String doLogout(HttpSession session) {
         // session 强制失效
         session.invalidate();

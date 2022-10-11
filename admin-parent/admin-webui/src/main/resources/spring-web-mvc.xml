@@ -45,7 +45,7 @@
             <!--  配置不拦截的资源-->
             <mvc:exclude-mapping path="/admin/to/login/page.html"/>
             <mvc:exclude-mapping path="/admin/do/login.html"/>
-            <mvc:exclude-mapping path="/admin/do.logout.html"/>
+            <mvc:exclude-mapping path="/admin/do/logout.html"/>
             <bean class="com.crowd.mvc.interceptor.LoginInterceptor"/>
 
         </mvc:interceptor>
